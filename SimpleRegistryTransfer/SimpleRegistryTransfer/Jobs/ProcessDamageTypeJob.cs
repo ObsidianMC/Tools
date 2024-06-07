@@ -1,9 +1,5 @@
 ﻿using SimpleRegistryTransfer.Entities;
 using SimpleRegistryTransfer.Entities.Codecs.DamageType;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace SimpleRegistryTransfer.Jobs;
 public sealed class ProcessDamageTypeJob : IProcessJob

@@ -1,7 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-
-namespace SimpleRegistryTransfer.Jobs;
+﻿namespace SimpleRegistryTransfer.Jobs;
 public sealed class ProcessItemsJob : IProcessJob
 {
     public async ValueTask Run()

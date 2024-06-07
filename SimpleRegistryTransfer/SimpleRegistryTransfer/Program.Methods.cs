@@ -1,11 +1,4 @@
-﻿using CliWrap;
-using SimpleRegistryTransfer;
-using System;
-using System.IO;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using SimpleRegistryTransfer;
 
 public partial class Program
 {
@@ -65,9 +58,4 @@ public partial class Program
             .WithWorkingDirectory(latestPath)
             .ExecuteAsync();
     }
-
-    public static void WriteLine(string value) => Console.WriteLine(value);
-
-    public static void WriteLine(string value, params object[] args) => Console.WriteLine(value, args);
-
 }
