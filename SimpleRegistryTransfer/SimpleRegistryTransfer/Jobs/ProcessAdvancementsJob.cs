@@ -6,7 +6,7 @@ public sealed class ProcessAdvancementsJob : IProcessJob
     public async ValueTask Run()
     {
         var dict = new Dictionary<string, JsonElement>();
-        foreach (var file in Directory.GetFiles(Path.Combine(Helpers.MinecraftDataPath, "advancements"), "*.json", SearchOption.AllDirectories))
+        foreach (var file in Directory.GetFiles(Path.Combine(Helpers.MinecraftDataPath, "advancement"), "*.json", SearchOption.AllDirectories))
         {
             var fi = new FileInfo(file);
             var name = fi.Name.Replace(".json", string.Empty);
