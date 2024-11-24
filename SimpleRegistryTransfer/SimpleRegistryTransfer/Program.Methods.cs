@@ -13,6 +13,7 @@ public partial class Program
 
         WriteLine("Latest version found... ({0})", latestVersion);
 
+        Helpers.LatestVersion = latestVersion;
         var latestPath = Path.Combine(Helpers.OutputPath, latestVersion);
 
         Helpers.EnviromentPath = latestPath;

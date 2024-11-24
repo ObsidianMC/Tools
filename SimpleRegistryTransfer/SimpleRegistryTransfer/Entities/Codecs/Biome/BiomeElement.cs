@@ -25,8 +25,8 @@ public class BiomeElement
 
     public string[][] Features { get; set; } = [];
 
-    [JsonConverter(typeof(SpecialDictionaryConverter))]
-    public Dictionary<string, string[]> Carvers { get; set; }
+    [JsonConverter(typeof(SpecialArrayConverter))]
+    public string[] Carvers { get; set; }
     public Dictionary<string, SpawnerMob[]> Spawners { get; set; }
     public Dictionary<string, object> SpawnCosts { get; set; }
 }

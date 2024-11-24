@@ -1,8 +1,6 @@
 ﻿using System.Globalization;
-using System.IO;
 using System.Net.Http;
 using System.Text.Encodings.Web;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace SimpleRegistryTransfer;
@@ -13,6 +11,8 @@ public static class Helpers
     public const string VersionManifestUrl = "https://launchermeta.mojang.com/mc/game/version_manifest.json";
 
     public static string EnviromentPath { get; set; }
+
+    public static string LatestVersion { get; set; }
 
     public static string GeneratedPath => Path.Combine(EnviromentPath, "generated");
     public static string MinecraftDataPath => Path.Combine(GeneratedPath, "data", "minecraft");
@@ -53,4 +53,43 @@ public static class Helpers
     };
 
     public static TextInfo TextInfo => CultureInfo.CurrentCulture.TextInfo;
+
+    public static string RemoveNamespace(this string namespacedName)
+    {
+        return namespacedName.Substring(namespacedName.IndexOf(":") + 1);
+    }
+
+    public static string ToPascalCase(this string snakeCase)
+    {
+        // Alternative implementation:
+        // var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
+        // return string.Join("", snakeCase.Split('_').Select(s => textInfo.ToTitleCase(s)));
+
+        int spaceCount = 0;
+        for (int i = 0; i < snakeCase.Length; i++)
+        {
+            if (!char.IsLetterOrDigit(snakeCase[i]))
+                spaceCount++;
+        }
+
+        var result = new char[snakeCase.Length - spaceCount];
+
+        int targetIndex = 0;
+        bool wordStart = true;
+        for (int i = 0; i < snakeCase.Length; i++)
+        {
+            char c = snakeCase[i];
+            if (char.IsLetterOrDigit(c))
+            {
+                result[targetIndex++] = wordStart ? char.ToUpper(c) : char.ToLower(c);
+                wordStart = false;
+            }
+            else
+            {
+                wordStart = true;
+            }
+        }
+
+        return new string(result);
+    }
 }

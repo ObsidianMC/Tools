@@ -17,7 +17,7 @@ public sealed class ProcessTagsJob : IProcessJob
         WriteLine($"Processing {files.Length} tags.");
         foreach (var file in files.Select(x => new FileInfo(x)))
         {
-            var relativePath = Path.GetRelativePath(".", file.DirectoryName).Replace("output\\1.21\\generated\\data\\minecraft\\tags\\", string.Empty).Replace("\\", "/");
+            var relativePath = Path.GetRelativePath(".", file.DirectoryName).Replace($"output\\{Helpers.LatestVersion}\\generated\\data\\minecraft\\tags\\", string.Empty).Replace("\\", "/");
             var fileName = Path.GetFileNameWithoutExtension(file.Name);
 
             var tagName = $"{relativePath}/{fileName}";
