@@ -10,3 +10,10 @@ public class BiomeMusicEffect
 
     public int MinDelay { get; set; }
 }
+
+public class BiomeMusicEffectData
+{
+    public BiomeMusicEffect Data { get; set; }
+
+    public int Weight { get; set; }
+}

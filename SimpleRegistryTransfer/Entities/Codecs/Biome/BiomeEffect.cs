@@ -2,7 +2,7 @@
 {
     public class BiomeEffect
     {
-        public BiomeMusicEffect Music { get; set; }
+        public BiomeMusicEffectData[] Music { get; set; }
 
         public string GrassColorModifier { get; set; }
         public string AmbientSound { get; set; }

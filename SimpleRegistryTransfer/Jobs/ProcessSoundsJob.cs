@@ -12,20 +12,13 @@ public sealed class ProcessSoundsJob : IProcessJob
 
         var sounds = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(entries.ToString());
 
-        var sb = new StringBuilder();
-        foreach (var (name, element) in sounds)
-        {
-            var newName = Helpers.TextInfo.ToTitleCase(name.Replace('.', '_'));
+        var soundsFile = new FileInfo(Path.Combine(Helpers.OutputPath, "sounds.json"));
 
-            var actualId = element.GetProperty("protocol_id").GetInt32();
+        if (soundsFile.Exists)
+            soundsFile.Delete();
 
-            sb.AppendLine($"{newName.TrimResourceTag()} = {actualId + 1},");
-        }
+        using var soundWriter = soundsFile.OpenWrite();
 
-        var soundsFile = new FileInfo(Path.Combine(Helpers.OutputPath, "sounds.txt"));
-
-        using var soundWriter = new StreamWriter(soundsFile.OpenWrite());
-
-        await soundWriter.WriteLineAsync(sb.ToString());
+        await JsonSerializer.SerializeAsync(soundWriter, sounds);
     }
 }

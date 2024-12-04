@@ -1,4 +1,6 @@
-﻿namespace SimpleRegistryTransfer.Entities.Codecs.ArmorTrim.TrimMaterial;
+﻿using System.Collections.Generic;
+
+namespace SimpleRegistryTransfer.Entities.Codecs.ArmorTrim.TrimMaterial;
 public sealed class TrimMaterialElement
 {
     public required string AssetName { get; init; }
@@ -7,5 +9,5 @@ public sealed class TrimMaterialElement
 
     public required string Ingredient { get; init; }
 
-    public required double ItemModelIndex { get; init; }
+    public Dictionary<string, string> OverrideArmorAssets { get; init; }
 }
