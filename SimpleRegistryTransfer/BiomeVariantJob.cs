@@ -2,7 +2,7 @@
 using SimpleRegistryTransfer.Entities.Codecs;
 
 namespace SimpleRegistryTransfer;
-public abstract class BiomeVariantJob(string identifier) : IProcessJob
+public sealed class BiomeVariantJob(string identifier) : IProcessJob
 {
     public async ValueTask Run()
     {

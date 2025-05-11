@@ -5,7 +5,7 @@ using System.Reflection;
 
 var jobs = Assembly.GetExecutingAssembly()
     .GetTypes()
-    .Where(x => typeof(IProcessJob).IsAssignableFrom(x) && x.IsClass)
+    .Where(x => typeof(IProcessJob).IsAssignableFrom(x) && x.IsClass && x.GetConstructor(Type.EmptyTypes) != null)
     .Select(x => (IProcessJob)Activator.CreateInstance(x))
     .ToList();
 
