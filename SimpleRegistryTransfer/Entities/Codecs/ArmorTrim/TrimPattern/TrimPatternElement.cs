@@ -6,6 +6,4 @@ public sealed class TrimPatternElement
     public required bool Decal { get; init; }
 
     public required ArmorTrimDescription Description { get; init; }
-
-    public required string TemplateItem { get; init; }
 }

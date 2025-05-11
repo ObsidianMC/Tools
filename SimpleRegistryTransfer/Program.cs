@@ -9,6 +9,14 @@ var jobs = Assembly.GetExecutingAssembly()
     .Select(x => (IProcessJob)Activator.CreateInstance(x))
     .ToList();
 
+jobs.AddRange([
+    new BiomeVariantJob("cat_variant"),
+    new BiomeVariantJob("chicken_variant"),
+    new BiomeVariantJob("cow_variant"),
+    new BiomeVariantJob("frog_variant"),
+    new BiomeVariantJob("pig_variant"),
+]);
+
 Directory.CreateDirectory(Helpers.OutputPath);
 
 await SetupEnviromentAsync();

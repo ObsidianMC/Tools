@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace SimpleRegistryTransfer.Entities
-{
-    public class BaseCodec<T>
-    {
-        public string Type { get; set; }
+namespace SimpleRegistryTransfer.Entities;
 
-        public List<T> Value { get; set; }
-    }
+public class BaseCodec<T>
+{
+    public string Type { get; set; }
+
+    public List<T> Value { get; set; }
 }
