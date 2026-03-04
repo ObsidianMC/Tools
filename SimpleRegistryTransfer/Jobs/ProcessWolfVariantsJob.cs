@@ -1,12 +1,13 @@
 ﻿using SimpleRegistryTransfer.Entities;
 using SimpleRegistryTransfer.Entities.Codecs.WolfSoundVariant;
+using SimpleRegistryTransfer.Entities.Codecs.WolfVariant;
 
 namespace SimpleRegistryTransfer.Jobs;
 public sealed class ProcessWolfVariantsJob : IProcessJob
 {
     public async ValueTask Run()
     {
-        BaseCodec<WolfSoundVariantCodec> wolfVariantCodec = new()
+        BaseCodec<WolfVariantCodec> wolfVariantCodec = new()
         {
             Type = "minecraft:wolf_variant",
             Value = []
@@ -21,9 +22,9 @@ public sealed class ProcessWolfVariantsJob : IProcessJob
             var wolfVariantName = wolfVariantFile.Name.Replace(".json", string.Empty);
 
             await using var wolfVariantFileStream = wolfVariantFile.OpenRead();
-            var element = await JsonSerializer.DeserializeAsync<WolfSoundVariantElement>(wolfVariantFileStream, Helpers.CodecJsonOptions);
+            var element = await JsonSerializer.DeserializeAsync<WolfVariantElement>(wolfVariantFileStream, Helpers.CodecJsonOptions);
 
-            wolfVariantCodec.Value.Add(new WolfSoundVariantCodec
+            wolfVariantCodec.Value.Add(new WolfVariantCodec
             {
                 Name = $"minecraft:{wolfVariantName}",
                 Element = element,
