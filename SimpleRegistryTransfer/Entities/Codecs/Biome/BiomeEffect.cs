@@ -12,11 +12,11 @@
 
         public BiomeParticle Particle { get; set; }
 
-        public int FoliageColor { get; set; }
-        public int SkyColor { get; set; }
-        public int WaterFogColor { get; set; }
-        public int FogColor { get; set; }
-        public int WaterColor { get; set; }
-        public int GrassColor { get; set; }
+        public string FoliageColor { get; set; }
+        public string SkyColor { get; set; }
+        public string WaterFogColor { get; set; }
+        public string FogColor { get; set; }
+        public string WaterColor { get; set; }
+        public string GrassColor { get; set; }
     }
 }
